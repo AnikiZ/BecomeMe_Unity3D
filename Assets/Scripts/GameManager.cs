@@ -91,15 +91,14 @@ public class GameManager : MonoBehaviour
   public void FinishedCG( )
   {
     gameMode = GameMode.Normal;
-    //SceneManager.UnloadScene(0);
+    SceneManager.UnloadScene(0);
     SceneManager.LoadScene(1);
     
   }
 
   public void ReloadBattle ()
   {
-        //SceneManager.UnloadScene(1);
-        SceneManager.LoadScene(1);
+    SceneManager.LoadScene(1);
   }
 
 }

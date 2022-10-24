@@ -8,6 +8,9 @@ public class MonsterAttack : StateMachineBehaviour
   Transform monster;
   Transform sword;
   Rigidbody rb;
+  bool audioPlayed = false;
+  int frame = 0;
+  int attackMotion = 0;
 
   // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
   override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -17,7 +20,7 @@ public class MonsterAttack : StateMachineBehaviour
     sword = GameObject.FindGameObjectWithTag("Monster_Sword").transform;
     rb = animator.GetComponent<Rigidbody>();
     monster.LookAt(player);
-    
+    frame = 0;
   }
 
 
@@ -32,16 +35,24 @@ public class MonsterAttack : StateMachineBehaviour
     {
       animator.SetBool("WillAttack", false);
     }
+    if (frame++ > 27 && !audioPlayed)
+    {
+      attackMotion = attackMotion % 3;
+      attackMotion += 1;
+      AudioPlayer.PlayMonsterAudio($"MonsterAttack{attackMotion}Audio");
+      audioPlayed = true;
+      Monster.DetectSlash();
+      if (FirstPlayer.health <= 0)
+      {
+        animator.SetBool("End", true);
+      }
+    }
   }
 
   // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
   override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
   {
-    Monster.DetectSlash();
-    if (FirstPlayer.health <= 0)
-    {
-      animator.SetBool("End", true);
-    }
+    audioPlayed = false;
     // Monster.DetectSlash(sword, player);
   }
 }

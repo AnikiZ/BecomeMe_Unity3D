@@ -12,6 +12,11 @@ public class Monster : MonoBehaviour
 
   public static bool willDie = false;
 
+  void Start()
+  {
+    health = 500;
+  }
+
   public static bool DetectAttackRange ()
   {
     Transform player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -22,6 +27,7 @@ public class Monster : MonoBehaviour
   
   public static void DetectSlash ()
   {
+    if (health <= 0) return;
     BoxCollider playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider>();
     SkinnedMeshRenderer monsterSwordCollider = GameObject.FindGameObjectWithTag("Monster_Sword").GetComponent<SkinnedMeshRenderer>();
     bool causeDamage = monsterSwordCollider.bounds.Intersects(playerCollider.bounds);
@@ -50,10 +56,16 @@ public class Monster : MonoBehaviour
     {
       Die();
     }
+    else
+    {
+      AudioPlayer.PlayMonsterAudio("MonsterInjuredAudio");
+    }
   }
 
   public static void Die ()
   {
     Monster.willDie = true;
+    AudioPlayer.PlayMonsterAudio("MonsterDieAudio");
   }
+
 }

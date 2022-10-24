@@ -32,6 +32,7 @@ public class BattleGameManager : MonoBehaviour
 
   public void ReloadBattle ()
   {
+    Debug.Log("restart!");
     SceneManager.LoadScene(1);
   }
 

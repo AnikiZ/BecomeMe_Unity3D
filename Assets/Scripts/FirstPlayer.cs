@@ -28,6 +28,7 @@ public class FirstPlayer : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
+    health = 100;
     cc = GetComponent<CharacterController>();
   }
 
@@ -91,6 +92,7 @@ public class FirstPlayer : MonoBehaviour
   
   public static bool DetectSlash ()
   {
+    if (health <= 0) return false;
     BoxCollider monsterCollider = GameObject.FindGameObjectWithTag("Monster").GetComponent<BoxCollider>();
     SkinnedMeshRenderer playerSwordCollider = GameObject.FindGameObjectWithTag("PlayerSword").GetComponent<SkinnedMeshRenderer>();
     bool causeDamage = playerSwordCollider.bounds.Intersects(monsterCollider.bounds);

@@ -12,7 +12,7 @@ public class PlayerAttack : StateMachineBehaviour
   override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
   {
     monster = GameObject.FindGameObjectWithTag("Monster").transform;
-    monster = GameObject.FindGameObjectWithTag("Monster").transform;
+    AudioPlayer.PlayAudio("PlayerAttackAudio");
   }
 
   override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

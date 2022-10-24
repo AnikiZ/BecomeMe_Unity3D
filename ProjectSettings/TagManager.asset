@@ -16,6 +16,7 @@ TagManager:
   - YouDie
   - PlayerSword
   - YouWon
+  - MyHPText
   layers:
   - Default
   - TransparentFX

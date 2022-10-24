@@ -19,8 +19,14 @@ public class Canvas : MonoBehaviour
     RectTransform MyHPRC = MyHP.GetComponent<RectTransform>();
     CanvasUtils.SetLeft(MyHPRC, 50f);
     CanvasUtils.SetRight(MyHPRC, 0.7f * CanvasRC.rect.width);
-    CanvasUtils.SetTop(MyHPRC, CanvasRC.rect.height - 60f);
-    CanvasUtils.SetBottom(MyHPRC, 30f);
+    CanvasUtils.SetTop(MyHPRC, CanvasRC.rect.height - 50f);
+    CanvasUtils.SetBottom(MyHPRC, 35f);
+    // GameObject MyHPText = GameObject.FindGameObjectWithTag("MyHPText");
+    // RectTransform MyHPTextRC = MyHPText.GetComponent<RectTransform>();
+    // CanvasUtils.SetLeft(MyHPTextRC, 10f);
+    // CanvasUtils.SetRight(MyHPTextRC, CanvasRC.rect.width - 50f);
+    // CanvasUtils.SetTop(MyHPTextRC, CanvasRC.rect.height - 60f);
+    // CanvasUtils.SetBottom(MyHPTextRC, 30f);
   }
 
   // Update is called once per frame
